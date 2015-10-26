@@ -1,0 +1,35 @@
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\Warehouse.exe.config
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\Warehouse.exe
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\Warehouse.pdb
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\App.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse_MarkupCompile.cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.g.resources
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.Properties.Resources.resources
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.csproj.GenerateResource.Cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.exe
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.pdb
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\EntityFramework.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\EntityFramework.SqlServer.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\EntityFramework.xml
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\EntityFramework.SqlServer.xml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\LogIn.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\LogIn.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse_MarkupCompile.lref
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\App.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Card.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Card.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.exe.licenses
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\Warehouse.csprojResolveAssemblyReference.cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\MakeOrder.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\MakeOrder.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\AdministratorWindow.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\AdministratorWindow.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Controls\OrderControl.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Controls\OrderControl.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Controls\MerchendiseControl.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Debug\View\Controls\MerchendiseControl.g.cs
+D:\Документы\Warehouse\Warehouse\bin\Debug\Warehouse.exe.config
+D:\Документы\Warehouse\Warehouse\obj\Debug\Warehouse.exe
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\Inspection methods.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Debug\Inspection methods.pdb

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91174dfc25e4492b8ed251d4f8e5b8c9" Name="Diagram1">
+        <EntityTypeShape EntityType="WarehouseModel.Contractor" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Firm" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Invoice" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Merchandise" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Order" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Role" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Types" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.User_Inf" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Users" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Worktype" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Send" Width="1.5" PointX="12.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Users_inv" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Coming_goods" Width="1.5" PointX="7.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Goods_in_type" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Invoice_goods" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Not_issued_goods" Width="1.5" PointX="2.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Product_to_sell" Width="1.5" PointX="4.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Search_coming_goods" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Search_contractors" Width="1.5" PointX="6.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Search_goods_brand" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.View_invoice" Width="1.5" PointX="12.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.View_margin" Width="1.5" PointX="8.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.View_merch" Width="1.5" PointX="14.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.View_send_goods" Width="1.5" PointX="14.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="WarehouseModel.FK_Contractor_Firm" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Invoice_Contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Order_Contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Send_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_inv_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Merchandise_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Merchandise_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Send_Merchandise1" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Order_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_User_Inf" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_inv_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_inv_Worktype" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

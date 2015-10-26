@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WarehouseModelStoreContainer" CdmEntityContainer="WarehouseEntities">
+    <EntitySetMapping Name="Contractor">
+      <EntityTypeMapping TypeName="WarehouseModel.Contractor">
+        <MappingFragment StoreEntitySet="Contractor">
+          <ScalarProperty Name="id_contractor" ColumnName="id_contractor" />
+          <ScalarProperty Name="leg_adress" ColumnName="leg_adress" />
+          <ScalarProperty Name="actual_adress" ColumnName="actual_adress" />
+          <ScalarProperty Name="phones" ColumnName="phones" />
+          <ScalarProperty Name="inn" ColumnName="inn" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="bank_ac" ColumnName="bank_ac" />
+          <ScalarProperty Name="id_firm" ColumnName="id_firm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Firm">
+      <EntityTypeMapping TypeName="WarehouseModel.Firm">
+        <MappingFragment StoreEntitySet="Firm">
+          <ScalarProperty Name="id_firm" ColumnName="id_firm" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="country" ColumnName="country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoice">
+      <EntityTypeMapping TypeName="WarehouseModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+          <ScalarProperty Name="data_get" ColumnName="data_get" />
+          <ScalarProperty Name="id_contractor" ColumnName="id_contractor" />
+          <ScalarProperty Name="summ" ColumnName="summ" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="data_paid" ColumnName="data_paid" />
+          <ScalarProperty Name="good_issue" ColumnName="good_issue" />
+          <ScalarProperty Name="data_issue" ColumnName="data_issue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Merchandise">
+      <EntityTypeMapping TypeName="WarehouseModel.Merchandise">
+        <MappingFragment StoreEntitySet="Merchandise">
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="specif_n" ColumnName="specif_n" />
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="count_order" ColumnName="count_order" />
+          <ScalarProperty Name="count_stored" ColumnName="count_stored" />
+          <ScalarProperty Name="count_send" ColumnName="count_send" />
+          <ScalarProperty Name="count_booked" ColumnName="count_booked" />
+          <ScalarProperty Name="consignment" ColumnName="consignment" />
+          <ScalarProperty Name="margin" ColumnName="margin" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="arrived" ColumnName="arrived" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="WarehouseModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="consigment" ColumnName="consigment" />
+          <ScalarProperty Name="id_contractor" ColumnName="id_contractor" />
+          <ScalarProperty Name="summ" ColumnName="summ" />
+          <ScalarProperty Name="date_order" ColumnName="date_order" />
+          <ScalarProperty Name="date_import" ColumnName="date_import" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="WarehouseModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WarehouseModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="WarehouseModel.Types">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Inf">
+      <EntityTypeMapping TypeName="WarehouseModel.User_Inf">
+        <MappingFragment StoreEntitySet="User_Inf">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="notation" ColumnName="notation" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="WarehouseModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="id_role" ColumnName="id_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Worktype">
+      <EntityTypeMapping TypeName="WarehouseModel.Worktype">
+        <MappingFragment StoreEntitySet="Worktype">
+          <ScalarProperty Name="id_worktype" ColumnName="id_worktype" />
+          <ScalarProperty Name="name_work" ColumnName="name_work" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Send">
+      <EntityTypeMapping TypeName="WarehouseModel.Send">
+        <MappingFragment StoreEntitySet="Send">
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_inv">
+      <EntityTypeMapping TypeName="WarehouseModel.Users_inv">
+        <MappingFragment StoreEntitySet="Users_inv">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_worktype" ColumnName="id_worktype" />
+          <ScalarProperty Name="datatime" ColumnName="datatime" />
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coming_goods">
+      <EntityTypeMapping TypeName="WarehouseModel.Coming_goods">
+        <MappingFragment StoreEntitySet="Coming_goods">
+          <ScalarProperty Name="C__партии" ColumnName="№ партии" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Кол_во" ColumnName="Кол-во" />
+          <ScalarProperty Name="Прибытие" ColumnName="Прибытие" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods_in_type">
+      <EntityTypeMapping TypeName="WarehouseModel.Goods_in_type">
+        <MappingFragment StoreEntitySet="Goods_in_type">
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Кол_во" ColumnName="Кол-во" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoice_goods">
+      <EntityTypeMapping TypeName="WarehouseModel.Invoice_goods">
+        <MappingFragment StoreEntitySet="Invoice_goods">
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="margin" ColumnName="margin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Not_issued_goods">
+      <EntityTypeMapping TypeName="WarehouseModel.Not_issued_goods">
+        <MappingFragment StoreEntitySet="Not_issued_goods">
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="data_get" ColumnName="data_get" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="good_issue" ColumnName="good_issue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_to_sell">
+      <EntityTypeMapping TypeName="WarehouseModel.Product_to_sell">
+        <MappingFragment StoreEntitySet="Product_to_sell">
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="C__партии" ColumnName="№ партии" />
+          <ScalarProperty Name="Кол_во" ColumnName="Кол-во" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Search_coming_goods">
+      <EntityTypeMapping TypeName="WarehouseModel.Search_coming_goods">
+        <MappingFragment StoreEntitySet="Search_coming_goods">
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="count_order" ColumnName="count_order" />
+          <ScalarProperty Name="arrived" ColumnName="arrived" />
+          <ScalarProperty Name="date_import" ColumnName="date_import" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Search_contractors">
+      <EntityTypeMapping TypeName="WarehouseModel.Search_contractors">
+        <MappingFragment StoreEntitySet="Search_contractors">
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Физический_адрес" ColumnName="Физический адрес" />
+          <ScalarProperty Name="Юридический_адрес" ColumnName="Юридический адрес" />
+          <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+          <ScalarProperty Name="Телефоны" ColumnName="Телефоны" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Search_goods_brand">
+      <EntityTypeMapping TypeName="WarehouseModel.Search_goods_brand">
+        <MappingFragment StoreEntitySet="Search_goods_brand">
+          <ScalarProperty Name="id_merch" ColumnName="id_merch" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Кол_во" ColumnName="Кол-во" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_invoice">
+      <EntityTypeMapping TypeName="WarehouseModel.View_invoice">
+        <MappingFragment StoreEntitySet="View_invoice">
+          <ScalarProperty Name="id_invoice" ColumnName="id_invoice" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+          <ScalarProperty Name="data_get" ColumnName="data_get" />
+          <ScalarProperty Name="summ" ColumnName="summ" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="data_paid" ColumnName="data_paid" />
+          <ScalarProperty Name="good_issue" ColumnName="good_issue" />
+          <ScalarProperty Name="data_issue" ColumnName="data_issue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_margin">
+      <EntityTypeMapping TypeName="WarehouseModel.View_margin">
+        <MappingFragment StoreEntitySet="View_margin">
+          <ScalarProperty Name="Код_товара" ColumnName="Код товара" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Кол_во_заказано" ColumnName="Кол-во заказано" />
+          <ScalarProperty Name="Кол_во_хранится" ColumnName="Кол-во хранится" />
+          <ScalarProperty Name="Кол_во_продано" ColumnName="Кол-во продано" />
+          <ScalarProperty Name="Маржа" ColumnName="Маржа" />
+          <ScalarProperty Name="Себестоимость" ColumnName="Себестоимость" />
+          <ScalarProperty Name="Прибыл____" ColumnName="Прибыл +/-" />
+          <ScalarProperty Name="C__партии" ColumnName="№ партии" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_merch">
+      <EntityTypeMapping TypeName="WarehouseModel.View_merch">
+        <MappingFragment StoreEntitySet="View_merch">
+          <ScalarProperty Name="Код_товара" ColumnName="Код_товара" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Описание" ColumnName="Описание" />
+          <ScalarProperty Name="Кол_во_заказано" ColumnName="Кол-во заказано" />
+          <ScalarProperty Name="Кол_во_хранится" ColumnName="Кол-во хранится" />
+          <ScalarProperty Name="Кол_во_продано" ColumnName="Кол-во продано" />
+          <ScalarProperty Name="Кол_во_зарезервированно" ColumnName="Кол-во зарезервированно" />
+          <ScalarProperty Name="C__партии" ColumnName="№ партии" />
+          <ScalarProperty Name="Наценка" ColumnName="Наценка" />
+          <ScalarProperty Name="Себестоимость" ColumnName="Себестоимость" />
+          <ScalarProperty Name="Брибытие" ColumnName="Брибытие" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_send_goods">
+      <EntityTypeMapping TypeName="WarehouseModel.View_send_goods">
+        <MappingFragment StoreEntitySet="View_send_goods">
+          <ScalarProperty Name="Код_товара" ColumnName="Код товара" />
+          <ScalarProperty Name="Кол_во_продано" ColumnName="Кол-во продано" />
+          <ScalarProperty Name="Себестоимость" ColumnName="Себестоимость" />
+          <ScalarProperty Name="Наценка" ColumnName="Наценка" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+          <ScalarProperty Name="Дата_продажи" ColumnName="Дата продажи" />
+          <ScalarProperty Name="Код_накладной" ColumnName="Код накладной" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

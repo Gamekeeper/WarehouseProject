@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="id_contractor" />
+    </Key>
+    <Property Name="id_contractor" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="leg_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="actual_adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phones" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <Property Name="inn" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="family" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="patronymic" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="bank_ac" Type="Decimal" Precision="20" Scale="0" />
+    <Property Name="id_firm" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Firm" Relationship="Self.FK_Contractor_Firm" FromRole="Contractor" ToRole="Firm" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK_Invoice_Contractor" FromRole="Contractor" ToRole="Invoice" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Contractor" FromRole="Contractor" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Firm">
+    <Key>
+      <PropertyRef Name="id_firm" />
+    </Key>
+    <Property Name="id_firm" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Contractor" Relationship="Self.FK_Contractor_Firm" FromRole="Firm" ToRole="Contractor" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+    </Key>
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data_get" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_contractor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="summ" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="paid" Type="Boolean" Nullable="false" />
+    <Property Name="data_paid" Type="DateTime" Precision="3" />
+    <Property Name="good_issue" Type="Boolean" Nullable="false" />
+    <Property Name="data_issue" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Contractor" Relationship="Self.FK_Invoice_Contractor" FromRole="Invoice" ToRole="Contractor" />
+    <NavigationProperty Name="Send" Relationship="Self.FK_Send_Invoice" FromRole="Invoice" ToRole="Send" />
+    <NavigationProperty Name="Users_inv" Relationship="Self.FK_Users_inv_Invoice" FromRole="Invoice" ToRole="Users_inv" />
+  </EntityType>
+  <EntityType Name="Merchandise">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="specif_n" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_type" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_order" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_stored" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_send" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_booked" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="consignment" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="margin" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="arrived" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Merchandise_Order" FromRole="Merchandise" ToRole="Order" />
+    <NavigationProperty Name="Types" Relationship="Self.FK_Merchandise_Types" FromRole="Merchandise" ToRole="Types" />
+    <NavigationProperty Name="Send" Relationship="Self.FK_Send_Merchandise1" FromRole="Merchandise" ToRole="Send" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="consigment" />
+    </Key>
+    <Property Name="consigment" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_contractor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="summ" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="date_order" Type="DateTime" Precision="0" />
+    <Property Name="date_import" Type="DateTime" Precision="0" />
+    <Property Name="id_user" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Contractor" Relationship="Self.FK_Order_Contractor" FromRole="Order" ToRole="Contractor" />
+    <NavigationProperty Name="Merchandise" Relationship="Self.FK_Merchandise_Order" FromRole="Order" ToRole="Merchandise" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Order_Users" FromRole="Order" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role" FromRole="Role" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Merchandise" Relationship="Self.FK_Merchandise_Types" FromRole="Types" ToRole="Merchandise" />
+  </EntityType>
+  <EntityType Name="User_Inf">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="adress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <Property Name="notation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_User_Inf" FromRole="User_Inf" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="family" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="patronymic" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="id_role" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Users" FromRole="Users" ToRole="Order" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
+    <NavigationProperty Name="User_Inf" Relationship="Self.FK_Users_User_Inf" FromRole="Users" ToRole="User_Inf" />
+    <NavigationProperty Name="Users_inv" Relationship="Self.FK_Users_inv_Users" FromRole="Users" ToRole="Users_inv" />
+  </EntityType>
+  <EntityType Name="Worktype">
+    <Key>
+      <PropertyRef Name="id_worktype" />
+    </Key>
+    <Property Name="id_worktype" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_work" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users_inv" Relationship="Self.FK_Users_inv_Worktype" FromRole="Worktype" ToRole="Users_inv" />
+  </EntityType>
+  <EntityType Name="Send">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK_Send_Invoice" FromRole="Send" ToRole="Invoice" />
+    <NavigationProperty Name="Merchandise" Relationship="Self.FK_Send_Merchandise1" FromRole="Send" ToRole="Merchandise" />
+  </EntityType>
+  <EntityType Name="Users_inv">
+    <Key>
+      <PropertyRef Name="id_user" />
+      <PropertyRef Name="id_worktype" />
+      <PropertyRef Name="id_invoice" />
+    </Key>
+    <Property Name="id_user" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_worktype" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="datatime" Type="DateTime" Precision="3" />
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK_Users_inv_Invoice" FromRole="Users_inv" ToRole="Invoice" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_inv_Users" FromRole="Users_inv" ToRole="Users" />
+    <NavigationProperty Name="Worktype" Relationship="Self.FK_Users_inv_Worktype" FromRole="Users_inv" ToRole="Worktype" />
+  </EntityType>
+  <EntityType Name="Coming_goods">
+    <Key>
+      <PropertyRef Name="C__партии" />
+      <PropertyRef Name="Тип" />
+      <PropertyRef Name="Кол_во" />
+    </Key>
+    <Property Name="C__партии" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тип" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Прибытие" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Goods_in_type">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тип" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Кол_во" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="Decimal" Precision="19" Scale="0" />
+  </EntityType>
+  <EntityType Name="Invoice_goods">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="cost" />
+      <PropertyRef Name="margin" />
+    </Key>
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="margin" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Not_issued_goods">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="data_get" />
+      <PropertyRef Name="paid" />
+      <PropertyRef Name="good_issue" />
+    </Key>
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="data_get" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="paid" Type="Boolean" Nullable="false" />
+    <Property Name="good_issue" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_to_sell">
+    <Key>
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="C__партии" />
+    </Key>
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="C__партии" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="Decimal" Precision="19" Scale="0" />
+  </EntityType>
+  <EntityType Name="Search_coming_goods">
+    <Key>
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count_order" />
+      <PropertyRef Name="arrived" />
+    </Key>
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="count_order" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="arrived" Type="Boolean" Nullable="false" />
+    <Property Name="date_import" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Search_contractors">
+    <Key>
+      <PropertyRef Name="Физический_адрес" />
+      <PropertyRef Name="Юридический_адрес" />
+      <PropertyRef Name="ИНН" />
+    </Key>
+    <Property Name="Фамилия" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Физический_адрес" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Юридический_адрес" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ИНН" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Телефоны" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Search_goods_brand">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тип" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Кол_во" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="Decimal" Precision="19" Scale="0" />
+  </EntityType>
+  <EntityType Name="View_invoice">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="data_get" />
+      <PropertyRef Name="summ" />
+      <PropertyRef Name="paid" />
+      <PropertyRef Name="good_issue" />
+    </Key>
+    <Property Name="id_invoice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="family" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="patronymic" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="data_get" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="summ" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="paid" Type="Boolean" Nullable="false" />
+    <Property Name="data_paid" Type="DateTime" Precision="3" />
+    <Property Name="good_issue" Type="Boolean" Nullable="false" />
+    <Property Name="data_issue" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="View_margin">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+      <PropertyRef Name="Кол_во_заказано" />
+      <PropertyRef Name="Кол_во_хранится" />
+      <PropertyRef Name="Кол_во_продано" />
+      <PropertyRef Name="Маржа" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Прибыл____" />
+      <PropertyRef Name="C__партии" />
+    </Key>
+    <Property Name="Код_товара" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Кол_во_заказано" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_хранится" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_продано" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Маржа" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Прибыл____" Type="Boolean" Nullable="false" />
+    <Property Name="C__партии" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_merch">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+      <PropertyRef Name="Кол_во_заказано" />
+      <PropertyRef Name="Кол_во_хранится" />
+      <PropertyRef Name="Кол_во_продано" />
+      <PropertyRef Name="Кол_во_зарезервированно" />
+      <PropertyRef Name="C__партии" />
+      <PropertyRef Name="Наценка" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Брибытие" />
+    </Key>
+    <Property Name="Код_товара" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тип" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Кол_во_заказано" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_хранится" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_продано" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_зарезервированно" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="C__партии" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наценка" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Брибытие" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_send_goods">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+      <PropertyRef Name="Кол_во_продано" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Наценка" />
+      <PropertyRef Name="Код_накладной" />
+    </Key>
+    <Property Name="Код_товара" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол_во_продано" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наценка" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Цена" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="Дата_продажи" Type="DateTime" Precision="3" />
+    <Property Name="Код_накладной" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Contractor_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="id_firm" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="id_firm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Contractor">
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="id_contractor" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="id_contractor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Contractor">
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="id_contractor" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="id_contractor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Send_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Send" Type="Self.Send" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="id_invoice" />
+      </Principal>
+      <Dependent Role="Send">
+        <PropertyRef Name="id_invoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="id_invoice" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_invoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Merchandise_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="consigment" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="consignment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Merchandise_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Send_Merchandise1">
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+    <End Role="Send" Type="Self.Send" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Merchandise">
+        <PropertyRef Name="id_merch" />
+      </Principal>
+      <Dependent Role="Send">
+        <PropertyRef Name="id_merch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_User_Inf">
+    <End Role="User_Inf" Type="Self.User_Inf" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Inf">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Worktype">
+    <End Role="Worktype" Type="Self.Worktype" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worktype">
+        <PropertyRef Name="id_worktype" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_worktype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WarehouseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contractor" EntityType="Self.Contractor" />
+    <EntitySet Name="Firm" EntityType="Self.Firm" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" />
+    <EntitySet Name="Merchandise" EntityType="Self.Merchandise" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Types" EntityType="Self.Types" />
+    <EntitySet Name="User_Inf" EntityType="Self.User_Inf" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Worktype" EntityType="Self.Worktype" />
+    <EntitySet Name="Send" EntityType="Self.Send" />
+    <EntitySet Name="Users_inv" EntityType="Self.Users_inv" />
+    <EntitySet Name="Coming_goods" EntityType="Self.Coming_goods" />
+    <EntitySet Name="Goods_in_type" EntityType="Self.Goods_in_type" />
+    <EntitySet Name="Invoice_goods" EntityType="Self.Invoice_goods" />
+    <EntitySet Name="Not_issued_goods" EntityType="Self.Not_issued_goods" />
+    <EntitySet Name="Product_to_sell" EntityType="Self.Product_to_sell" />
+    <EntitySet Name="Search_coming_goods" EntityType="Self.Search_coming_goods" />
+    <EntitySet Name="Search_contractors" EntityType="Self.Search_contractors" />
+    <EntitySet Name="Search_goods_brand" EntityType="Self.Search_goods_brand" />
+    <EntitySet Name="View_invoice" EntityType="Self.View_invoice" />
+    <EntitySet Name="View_margin" EntityType="Self.View_margin" />
+    <EntitySet Name="View_merch" EntityType="Self.View_merch" />
+    <EntitySet Name="View_send_goods" EntityType="Self.View_send_goods" />
+    <AssociationSet Name="FK_Contractor_Firm" Association="Self.FK_Contractor_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Contractor" EntitySet="Contractor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Contractor" Association="Self.FK_Invoice_Contractor">
+      <End Role="Contractor" EntitySet="Contractor" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Contractor" Association="Self.FK_Order_Contractor">
+      <End Role="Contractor" EntitySet="Contractor" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Send_Invoice" Association="Self.FK_Send_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Send" EntitySet="Send" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Invoice" Association="Self.FK_Users_inv_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Merchandise_Order" Association="Self.FK_Merchandise_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Merchandise_Types" Association="Self.FK_Merchandise_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Send_Merchandise1" Association="Self.FK_Send_Merchandise1">
+      <End Role="Merchandise" EntitySet="Merchandise" />
+      <End Role="Send" EntitySet="Send" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_User_Inf" Association="Self.FK_Users_User_Inf">
+      <End Role="User_Inf" EntitySet="User_Inf" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Users" Association="Self.FK_Users_inv_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Worktype" Association="Self.FK_Users_inv_Worktype">
+      <End Role="Worktype" EntitySet="Worktype" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Warehouse.View.Controls.MerchendiseControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             DataContext="{StaticResource MerchendiseWindowViewModel}"
+             d:DesignHeight="547" d:DesignWidth="1036">
+    <Grid Background="#FF3F8ACD" Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="883*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="219*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl Grid.Row="0"  ItemsSource="{Binding Merchandises}" Margin="0,0,0,4" Grid.ColumnSpan="2">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Header="ID" Binding="{Binding id_merch}"/>
+                <dxg:GridColumn Header="Наименование" Binding="{Binding brand}"/>
+                <dxg:GridColumn Header="Тип" Binding="{Binding Types.name}"/>
+                <dxg:GridColumn Header="Описание" Binding="{Binding specif_n}"/>
+                <dxg:GridColumn Header="Кол-во-Заказанно" Binding="{Binding count_order}"/>
+                <dxg:GridColumn Header="Кол-во/Хранится" Binding="{Binding count_stored}"/>
+                <dxg:GridColumn Header="Кол-во/Продано" Binding="{Binding count_send}"/>
+                <dxg:GridColumn Header="Кол-во/Зарезервированно" Binding="{Binding count_booked}"/>
+                <dxg:GridColumn Header="Номер партии" Binding="{Binding consignment}"/>
+                <dxg:GridColumn Header="Наценка" Binding="{Binding margin}"/>
+                <dxg:GridColumn Header="Себестоимость" Binding="{Binding cost}"/>
+                <dxg:GridColumn Header="Прибытие" Binding="{Binding arrived}" SortOrder="Ascending" SortIndex="0"/>
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+        <Button Content="Добавить товар" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109"  Command="{Binding CreateCard}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WarehouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="id_contractor" />
+    </Key>
+    <Property Name="id_contractor" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leg_adress" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="actual_adress" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phones" Type="nchar" MaxLength="40" />
+    <Property Name="inn" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="family" Type="nchar" MaxLength="30" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="patronymic" Type="nchar" MaxLength="30" />
+    <Property Name="bank_ac" Type="numeric" Precision="20" Scale="0" />
+    <Property Name="id_firm" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Firm">
+    <Key>
+      <PropertyRef Name="id_firm" />
+    </Key>
+    <Property Name="id_firm" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="note" Type="text" />
+    <Property Name="country" Type="nchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+    </Key>
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data_get" Type="date" Nullable="false" />
+    <Property Name="id_contractor" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="summ" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="paid" Type="bit" Nullable="false" />
+    <Property Name="data_paid" Type="datetime" />
+    <Property Name="good_issue" Type="bit" Nullable="false" />
+    <Property Name="data_issue" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Merchandise">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="specif_n" Type="text" />
+    <Property Name="id_type" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_order" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_stored" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_send" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count_booked" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="consignment" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="margin" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cost" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="arrived" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="consigment" />
+    </Key>
+    <Property Name="consigment" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_contractor" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="summ" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="date_order" Type="date" />
+    <Property Name="date_import" Type="date" />
+    <Property Name="id_user" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id_role" />
+    </Key>
+    <Property Name="id_role" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Send' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Send">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="count" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="User_Inf">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="phone" Type="nchar" MaxLength="20" />
+    <Property Name="adress" Type="nchar" MaxLength="100" />
+    <Property Name="mail" Type="nchar" MaxLength="40" />
+    <Property Name="notation" Type="text" />
+    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="family" Type="nchar" MaxLength="30" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="patronymic" Type="nchar" MaxLength="30" />
+    <Property Name="id_role" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Users_inv' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Users_inv">
+    <Key>
+      <PropertyRef Name="id_user" />
+      <PropertyRef Name="id_worktype" />
+      <PropertyRef Name="id_invoice" />
+    </Key>
+    <Property Name="id_user" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_worktype" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="datatime" Type="datetime" />
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Worktype">
+    <Key>
+      <PropertyRef Name="id_worktype" />
+    </Key>
+    <Property Name="id_worktype" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_work" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Coming_goods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Coming_goods">
+    <Key>
+      <PropertyRef Name="№ партии" />
+      <PropertyRef Name="Тип" />
+      <PropertyRef Name="Кол-во" />
+    </Key>
+    <Property Name="№ партии" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Тип" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Прибытие" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Goods_in_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Goods_in_type">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Тип" Type="nchar" MaxLength="30" />
+    <Property Name="Описание" Type="text" />
+    <Property Name="Кол-во" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="numeric" Precision="19" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Invoice_goods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Invoice_goods">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="cost" />
+      <PropertyRef Name="margin" />
+    </Key>
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="count" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="cost" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="margin" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Not_issued_goods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Not_issued_goods">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="data_get" />
+      <PropertyRef Name="paid" />
+      <PropertyRef Name="good_issue" />
+    </Key>
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="count" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="data_get" Type="date" Nullable="false" />
+    <Property Name="paid" Type="bit" Nullable="false" />
+    <Property Name="good_issue" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Product_to_sell' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Product_to_sell">
+    <Key>
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="№ партии" />
+    </Key>
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="№ партии" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="numeric" Precision="19" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Search_coming_goods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Search_coming_goods">
+    <Key>
+      <PropertyRef Name="id_merch" />
+      <PropertyRef Name="count_order" />
+      <PropertyRef Name="arrived" />
+    </Key>
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="count_order" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="arrived" Type="bit" Nullable="false" />
+    <Property Name="date_import" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Search_contractors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Search_contractors">
+    <Key>
+      <PropertyRef Name="Физический адрес" />
+      <PropertyRef Name="Юридический адрес" />
+      <PropertyRef Name="ИНН" />
+    </Key>
+    <Property Name="Фамилия" Type="nchar" MaxLength="30" />
+    <Property Name="Имя" Type="nchar" MaxLength="30" />
+    <Property Name="Отчество" Type="nchar" MaxLength="30" />
+    <Property Name="Физический адрес" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Юридический адрес" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ИНН" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Телефоны" Type="nchar" MaxLength="40" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.Search_goods_brand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Search_goods_brand">
+    <Key>
+      <PropertyRef Name="id_merch" />
+    </Key>
+    <Property Name="id_merch" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Тип" Type="nchar" MaxLength="30" />
+    <Property Name="Описание" Type="text" />
+    <Property Name="Кол-во" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="Цена" Type="numeric" Precision="19" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.View_invoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_invoice">
+    <Key>
+      <PropertyRef Name="id_invoice" />
+      <PropertyRef Name="data_get" />
+      <PropertyRef Name="summ" />
+      <PropertyRef Name="paid" />
+      <PropertyRef Name="good_issue" />
+    </Key>
+    <Property Name="id_invoice" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="family" Type="nchar" MaxLength="30" />
+    <Property Name="name" Type="nchar" MaxLength="30" />
+    <Property Name="patronymic" Type="nchar" MaxLength="30" />
+    <Property Name="data_get" Type="date" Nullable="false" />
+    <Property Name="summ" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="paid" Type="bit" Nullable="false" />
+    <Property Name="data_paid" Type="datetime" />
+    <Property Name="good_issue" Type="bit" Nullable="false" />
+    <Property Name="data_issue" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.View_margin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_margin">
+    <Key>
+      <PropertyRef Name="Код товара" />
+      <PropertyRef Name="Кол-во заказано" />
+      <PropertyRef Name="Кол-во хранится" />
+      <PropertyRef Name="Кол-во продано" />
+      <PropertyRef Name="Маржа" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Прибыл +/-" />
+      <PropertyRef Name="№ партии" />
+    </Key>
+    <Property Name="Код товара" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Кол-во заказано" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во хранится" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во продано" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Маржа" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Прибыл +/-" Type="bit" Nullable="false" />
+    <Property Name="№ партии" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.View_merch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_merch">
+    <Key>
+      <PropertyRef Name="Код_товара" />
+      <PropertyRef Name="Кол-во заказано" />
+      <PropertyRef Name="Кол-во хранится" />
+      <PropertyRef Name="Кол-во продано" />
+      <PropertyRef Name="Кол-во зарезервированно" />
+      <PropertyRef Name="№ партии" />
+      <PropertyRef Name="Наценка" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Брибытие" />
+    </Key>
+    <Property Name="Код_товара" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Тип" Type="nchar" MaxLength="30" />
+    <Property Name="Описание" Type="text" />
+    <Property Name="Кол-во заказано" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во хранится" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во продано" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во зарезервированно" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="№ партии" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наценка" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Брибытие" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Warehouse.dbo.View_send_goods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_send_goods">
+    <Key>
+      <PropertyRef Name="Код товара" />
+      <PropertyRef Name="Кол-во продано" />
+      <PropertyRef Name="Себестоимость" />
+      <PropertyRef Name="Наценка" />
+      <PropertyRef Name="Код накладной" />
+    </Key>
+    <Property Name="Код товара" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Кол-во продано" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Себестоимость" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Наценка" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Цена" Type="numeric" Precision="19" Scale="0" />
+    <Property Name="Дата продажи" Type="datetime" />
+    <Property Name="Код накладной" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Contractor_Firm">
+    <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firm">
+        <PropertyRef Name="id_firm" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="id_firm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Contractor">
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="id_contractor" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="id_contractor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Merchandise_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="consigment" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="consignment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Merchandise_Types">
+    <End Role="Types" Type="Self.Types" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Contractor">
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="id_contractor" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="id_contractor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Send_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Send" Type="Self.Send" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="id_invoice" />
+      </Principal>
+      <Dependent Role="Send">
+        <PropertyRef Name="id_invoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Send_Merchandise1">
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+    <End Role="Send" Type="Self.Send" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Merchandise">
+        <PropertyRef Name="id_merch" />
+      </Principal>
+      <Dependent Role="Send">
+        <PropertyRef Name="id_merch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Invoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="id_invoice" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_invoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_inv_Worktype">
+    <End Role="Worktype" Type="Self.Worktype" Multiplicity="1" />
+    <End Role="Users_inv" Type="Self.Users_inv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worktype">
+        <PropertyRef Name="id_worktype" />
+      </Principal>
+      <Dependent Role="Users_inv">
+        <PropertyRef Name="id_worktype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id_role" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_User_Inf">
+    <End Role="User_Inf" Type="Self.User_Inf" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Inf">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WarehouseModelStoreContainer">
+    <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Merchandise" EntityType="Self.Merchandise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Inf" EntityType="Self.User_Inf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worktype" EntityType="Self.Worktype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Send" EntityType="Self.Send" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Send].[id_invoice] AS [id_invoice], 
+    [Send].[id_merch] AS [id_merch], 
+    [Send].[count] AS [count], 
+    [Send].[price] AS [price]
+    FROM [dbo].[Send] AS [Send]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Users_inv" EntityType="Self.Users_inv" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users_inv].[id_user] AS [id_user], 
+    [Users_inv].[id_worktype] AS [id_worktype], 
+    [Users_inv].[datatime] AS [datatime], 
+    [Users_inv].[id_invoice] AS [id_invoice]
+    FROM [dbo].[Users_inv] AS [Users_inv]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Coming_goods" EntityType="Self.Coming_goods" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Coming_goods].[№ партии] AS [№ партии], 
+    [Coming_goods].[Наименование] AS [Наименование], 
+    [Coming_goods].[Тип] AS [Тип], 
+    [Coming_goods].[Кол-во] AS [Кол-во], 
+    [Coming_goods].[Прибытие] AS [Прибытие]
+    FROM [dbo].[Coming_goods] AS [Coming_goods]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Goods_in_type" EntityType="Self.Goods_in_type" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Goods_in_type].[id_merch] AS [id_merch], 
+    [Goods_in_type].[Наименование] AS [Наименование], 
+    [Goods_in_type].[Тип] AS [Тип], 
+    [Goods_in_type].[Описание] AS [Описание], 
+    [Goods_in_type].[Кол-во] AS [Кол-во], 
+    [Goods_in_type].[Цена] AS [Цена]
+    FROM [dbo].[Goods_in_type] AS [Goods_in_type]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Invoice_goods" EntityType="Self.Invoice_goods" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Invoice_goods].[id_invoice] AS [id_invoice], 
+    [Invoice_goods].[brand] AS [brand], 
+    [Invoice_goods].[count] AS [count], 
+    [Invoice_goods].[price] AS [price], 
+    [Invoice_goods].[cost] AS [cost], 
+    [Invoice_goods].[margin] AS [margin]
+    FROM [dbo].[Invoice_goods] AS [Invoice_goods]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Not_issued_goods" EntityType="Self.Not_issued_goods" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Not_issued_goods].[id_invoice] AS [id_invoice], 
+    [Not_issued_goods].[id_merch] AS [id_merch], 
+    [Not_issued_goods].[name] AS [name], 
+    [Not_issued_goods].[brand] AS [brand], 
+    [Not_issued_goods].[count] AS [count], 
+    [Not_issued_goods].[data_get] AS [data_get], 
+    [Not_issued_goods].[paid] AS [paid], 
+    [Not_issued_goods].[good_issue] AS [good_issue]
+    FROM [dbo].[Not_issued_goods] AS [Not_issued_goods]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Product_to_sell" EntityType="Self.Product_to_sell" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Product_to_sell].[id_merch] AS [id_merch], 
+    [Product_to_sell].[Наименование] AS [Наименование], 
+    [Product_to_sell].[name] AS [name], 
+    [Product_to_sell].[№ партии] AS [№ партии], 
+    [Product_to_sell].[Кол-во] AS [Кол-во], 
+    [Product_to_sell].[Цена] AS [Цена]
+    FROM [dbo].[Product_to_sell] AS [Product_to_sell]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Search_coming_goods" EntityType="Self.Search_coming_goods" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Search_coming_goods].[id_merch] AS [id_merch], 
+    [Search_coming_goods].[brand] AS [brand], 
+    [Search_coming_goods].[name] AS [name], 
+    [Search_coming_goods].[count_order] AS [count_order], 
+    [Search_coming_goods].[arrived] AS [arrived], 
+    [Search_coming_goods].[date_import] AS [date_import]
+    FROM [dbo].[Search_coming_goods] AS [Search_coming_goods]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Search_contractors" EntityType="Self.Search_contractors" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Search_contractors].[Фамилия] AS [Фамилия], 
+    [Search_contractors].[Имя] AS [Имя], 
+    [Search_contractors].[Отчество] AS [Отчество], 
+    [Search_contractors].[Физический адрес] AS [Физический адрес], 
+    [Search_contractors].[Юридический адрес] AS [Юридический адрес], 
+    [Search_contractors].[ИНН] AS [ИНН], 
+    [Search_contractors].[Телефоны] AS [Телефоны]
+    FROM [dbo].[Search_contractors] AS [Search_contractors]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Search_goods_brand" EntityType="Self.Search_goods_brand" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Search_goods_brand].[id_merch] AS [id_merch], 
+    [Search_goods_brand].[Наименование] AS [Наименование], 
+    [Search_goods_brand].[Тип] AS [Тип], 
+    [Search_goods_brand].[Описание] AS [Описание], 
+    [Search_goods_brand].[Кол-во] AS [Кол-во], 
+    [Search_goods_brand].[Цена] AS [Цена]
+    FROM [dbo].[Search_goods_brand] AS [Search_goods_brand]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_invoice" EntityType="Self.View_invoice" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_invoice].[id_invoice] AS [id_invoice], 
+    [View_invoice].[family] AS [family], 
+    [View_invoice].[name] AS [name], 
+    [View_invoice].[patronymic] AS [patronymic], 
+    [View_invoice].[data_get] AS [data_get], 
+    [View_invoice].[summ] AS [summ], 
+    [View_invoice].[paid] AS [paid], 
+    [View_invoice].[data_paid] AS [data_paid], 
+    [View_invoice].[good_issue] AS [good_issue], 
+    [View_invoice].[data_issue] AS [data_issue]
+    FROM [dbo].[View_invoice] AS [View_invoice]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_margin" EntityType="Self.View_margin" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_margin].[Код товара] AS [Код товара], 
+    [View_margin].[Наименование] AS [Наименование], 
+    [View_margin].[Кол-во заказано] AS [Кол-во заказано], 
+    [View_margin].[Кол-во хранится] AS [Кол-во хранится], 
+    [View_margin].[Кол-во продано] AS [Кол-во продано], 
+    [View_margin].[Маржа] AS [Маржа], 
+    [View_margin].[Себестоимость] AS [Себестоимость], 
+    [View_margin].[Прибыл +/-] AS [Прибыл +/-], 
+    [View_margin].[№ партии] AS [№ партии]
+    FROM [dbo].[View_margin] AS [View_margin]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_merch" EntityType="Self.View_merch" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_merch].[Код_товара] AS [Код_товара], 
+    [View_merch].[Наименование] AS [Наименование], 
+    [View_merch].[Тип] AS [Тип], 
+    [View_merch].[Описание] AS [Описание], 
+    [View_merch].[Кол-во заказано] AS [Кол-во заказано], 
+    [View_merch].[Кол-во хранится] AS [Кол-во хранится], 
+    [View_merch].[Кол-во продано] AS [Кол-во продано], 
+    [View_merch].[Кол-во зарезервированно] AS [Кол-во зарезервированно], 
+    [View_merch].[№ партии] AS [№ партии], 
+    [View_merch].[Наценка] AS [Наценка], 
+    [View_merch].[Себестоимость] AS [Себестоимость], 
+    [View_merch].[Брибытие] AS [Брибытие]
+    FROM [dbo].[View_merch] AS [View_merch]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_send_goods" EntityType="Self.View_send_goods" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_send_goods].[Код товара] AS [Код товара], 
+    [View_send_goods].[Кол-во продано] AS [Кол-во продано], 
+    [View_send_goods].[Себестоимость] AS [Себестоимость], 
+    [View_send_goods].[Наценка] AS [Наценка], 
+    [View_send_goods].[Цена] AS [Цена], 
+    [View_send_goods].[Дата продажи] AS [Дата продажи], 
+    [View_send_goods].[Код накладной] AS [Код накладной]
+    FROM [dbo].[View_send_goods] AS [View_send_goods]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Contractor_Firm" Association="Self.FK_Contractor_Firm">
+      <End Role="Firm" EntitySet="Firm" />
+      <End Role="Contractor" EntitySet="Contractor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Contractor" Association="Self.FK_Invoice_Contractor">
+      <End Role="Contractor" EntitySet="Contractor" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Merchandise_Order" Association="Self.FK_Merchandise_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Merchandise_Types" Association="Self.FK_Merchandise_Types">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Contractor" Association="Self.FK_Order_Contractor">
+      <End Role="Contractor" EntitySet="Contractor" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Send_Invoice" Association="Self.FK_Send_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Send" EntitySet="Send" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Send_Merchandise1" Association="Self.FK_Send_Merchandise1">
+      <End Role="Merchandise" EntitySet="Merchandise" />
+      <End Role="Send" EntitySet="Send" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Invoice" Association="Self.FK_Users_inv_Invoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Users" Association="Self.FK_Users_inv_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_inv_Worktype" Association="Self.FK_Users_inv_Worktype">
+      <End Role="Worktype" EntitySet="Worktype" />
+      <End Role="Users_inv" EntitySet="Users_inv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_User_Inf" Association="Self.FK_Users_User_Inf">
+      <End Role="User_Inf" EntitySet="User_Inf" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

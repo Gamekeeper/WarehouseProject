@@ -1,0 +1,33 @@
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\Warehouse.exe.config
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\Warehouse.exe
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\Warehouse.pdb
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\EntityFramework.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\EntityFramework.SqlServer.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\Inspection methods.dll
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\EntityFramework.xml
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\EntityFramework.SqlServer.xml
+D:\Документы\VSworks\Warehouse\Warehouse\bin\Release\Inspection methods.pdb
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.csprojResolveAssemblyReference.cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Card.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Controls\MerchendiseControl.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Controls\OrderControl.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\LogIn.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\MakeOrder.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\AdministratorWindow.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Card.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Controls\MerchendiseControl.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\Controls\OrderControl.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\LogIn.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\MakeOrder.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\App.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse_MarkupCompile.cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse_MarkupCompile.lref
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\App.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\View\AdministratorWindow.baml
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.g.resources
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.Properties.Resources.resources
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.csproj.GenerateResource.Cache
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.exe.licenses
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.exe
+D:\Документы\VSworks\Warehouse\Warehouse\obj\Release\Warehouse.pdb

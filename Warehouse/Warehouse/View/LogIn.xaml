@@ -1,0 +1,16 @@
+﻿<Window x:Class="Warehouse.View.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход в программу" Height="227.757" Width="225.184"
+        DataContext="{DynamicResource LogInViewModel}"
+        ResizeMode="NoResize" 
+        Icon="/Warehouse;component/icon.png">
+    <Grid>
+        <TextBox Name="txtLogIn" HorizontalAlignment="Left" Height="23" Margin="73,27,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <PasswordBox Name="txtPass" HorizontalAlignment="Left" Height="23" Margin="73,65,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
+        <Button Content="Логин" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="75" Command="{Binding LogIn}"/>
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="118,147,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Exit}" />
+    </Grid>
+</Window>

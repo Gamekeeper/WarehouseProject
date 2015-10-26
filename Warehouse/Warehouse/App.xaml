@@ -1,0 +1,14 @@
+﻿<Application x:Class="Warehouse.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ViewModel ="clr-namespace:Warehouse.ViewModel"
+             StartupUri="View/LogIn.xaml"> 
+    <Application.Resources>        
+        <ViewModel:LogInViewModel x:Key="LogInViewModel"/>
+        <ViewModel:MerchendiseWindowViewModel x:Key="MerchendiseWindowViewModel"/>
+        <ViewModel:OrderWindowViewModel x:Key="OrderWindowViewModel"/>
+        <ViewModel:CardViewModel x:Key="CardViewModel"/>
+        <ViewModel:MakeOrderViewModel x:Key="MakeOrderViewModel"/>
+        <ViewModel:AdministratorWindowViewModel x:Key="AdministratorWindowViewModel"/>
+    </Application.Resources>
+</Application>
